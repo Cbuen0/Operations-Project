@@ -1,17 +1,16 @@
 # ASM-001 Aircraft Research Sensor Mount
-### NASA AFRC Flight Test Instrumentation Portfolio Project
+### Operations Flight Test Portfolio Project
 **Author:** Carlos Bueno | **Date:** April 2026
 
 ---
 
 ## Project Overview
 
-This project demonstrates an end-to-end aerospace engineering workflow for the design, analysis, and integration of a research instrumentation sensor mount for aircraft applications — directly aligned with NASA Armstrong Flight Research Center (AFRC) operations engineering requirements.
+This project demonstrates an end-to-end aerospace engineering workflow for the design, analysis, and integration of a research sensor mount for aircraft flight tests directly aligned with NASA operations engineering requirements.
 
-The project covers four engineering disciplines in one deliverable:
+The project covers three engineering disciplines in one project:
 - **CAD Design** — 3D bracket model and engineering drawing in Onshape
-- **Structural Analysis** — mass properties, CG shift, and 9G load margin check
-- **Risk Assessment** — Design FMEA following MIL-STD-1629A aerospace standards
+- **Risk Assessment** — Design FMEA following aerospace standards
 - **Flight Data Analysis** — Python anomaly detection dashboard using real mass properties from the CAD model
 
 ---
@@ -19,20 +18,20 @@ The project covers four engineering disciplines in one deliverable:
 ## Repository Structure
 
 ```
-nasa-sensor-mount/
+Operations-Project/
 │
 ├── cad/
-│   ├── ASM-001_sensor_mount_drawing.pdf     # Engineering drawing (ANSI, 1:2 scale)
-│   └── sensor_mount_assembly_render.png     # Onshape assembly screenshot
+│   ├── ASM-001_sensor_mount_drawing.pdf    # Design drawing
+│   └── sensor_mount_assembly_render.png    # Onshape assembly screenshot
 │
 ├── fmea/
-│   └── ASM-001_Design_FMEA.xlsx            # Design FMEA (MIL-STD-1629A aligned)
+│   └── ASM-001_Design_FMEA.xlsx            # Design FMEA
 │
 ├── python/
-│   ├── generate_flight_data.py             # Generates synthetic flight test CSV
-│   ├── sensor_mount_analysis.py            # Main analysis and dashboard script
-│   ├── flight_test_data.csv                # Generated flight data (500 time steps)
-│   ├── sensor_mount_dashboard.png          # Output dashboard (auto-generated)
+│   ├── flight_data.py                      # Flight data generation
+│   ├── sensor_analysis.py                  # Anlysis and dashboard
+│   ├── flight_test_data.csv                # Generated flight data
+│   ├── sensor_dashboard.png                # Output dashboard
 │   └── requirements.txt                    # Python dependencies
 │
 └── README.md
@@ -42,9 +41,9 @@ nasa-sensor-mount/
 
 ## CAD Model — Onshape (ASM-001)
 
-**Part:** Aircraft Research Sensor Mount Bracket
+**Part:** Aircraft Research Sensor Mount
 **Material:** 6061-T6 Aluminum
-**Drawing Number:** ASM-001 | Rev A | April 2026
+**Drawing Number:** ASM-001 | Rev 1.0 | April 2026
 
 ### Bracket Specifications
 
@@ -141,114 +140,9 @@ Loads real mass properties exported from the Onshape CAD model (ASM-001) and per
 4. **Anomaly detection** — flags vibration events, high-G maneuvers, and airspeed dropouts using threshold and rolling mean methods
 5. **Dashboard generation** — outputs a 4-panel matplotlib engineering dashboard
 
-### Key Analysis Results
-
-| Check | Result | Limit | Status |
-|---|---|---|---|
-| Assembly mass | 2.303 lb | 5.000 lb | ✅ PASS |
-| Weight margin | 2.697 lb | — | ✅ PASS |
-| CG shift | 0.0004 in | 0.100 in | ✅ PASS |
-| Max load (9G) | 20.73 lb | ~6000 lb (bolts) | ✅ PASS |
-| Vibration anomalies | 5 events | — | ⚠️ FLAGGED |
-| High-G events | 4 events | — | ⚠️ FLAGGED |
-| Airspeed dropouts | 4 events | — | ⚠️ FLAGGED |
-
 ### Dashboard Output
 
-![Dashboard](python/sensor_mount_dashboard.png)
-
----
-
-## How to Run Locally
-
-### Requirements
-- Python 3.8 or higher
-- pip
-
-### Step 1 — Clone the repository
-```bash
-git clone https://github.com/YOUR_USERNAME/nasa-sensor-mount.git
-cd nasa-sensor-mount/python
-```
-
-### Step 2 — Create a virtual environment (recommended)
-```bash
-# Create the environment
-python -m venv venv
-
-# Activate it — Windows
-venv\Scripts\activate
-
-# Activate it — Mac/Linux
-source venv/bin/activate
-```
-
-### Step 3 — Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### Step 4 — Generate flight data
-```bash
-python generate_flight_data.py
-```
-Expected output:
-```
-Generated 500 rows of flight test data -> flight_test_data.csv
-```
-
-### Step 5 — Run the analysis and generate dashboard
-```bash
-python sensor_mount_analysis.py
-```
-Expected output:
-```
-============================================================
-ASM-001 SENSOR MOUNT — MASS PROPERTIES REPORT
-============================================================
-  Bracket mass:       0.930 lb
-  Sensor body mass:   1.373 lb
-  Assembly total:     2.303 lb
-  Weight limit:       5.000 lb
-  Weight margin:      2.697 lb  (PASS)
-
-  Assembly CG:  X=-0.256 in  Y=-8.50e-05 in  Z=-1.174 in
-
-  CG shift due to payload: 0.0004 in
-  CG shift limit:          0.1000 in
-  CG check:                PASS
-
-  Max load at 9G:          20.73 lb
-  (4x 1/4-20 bolts rated ~6000 lb combined shear — well within margin)
-
-FLIGHT TEST ANOMALY DETECTION SUMMARY
-----------------------------------------
-  Vibration events  (>3.0 in/s²): 5
-  High-G events     (>2.5g):       4
-  Airspeed dropouts (>20.0 kts drop): 4
-  Total anomaly points:              13
-
-Dashboard saved -> sensor_mount_dashboard.png
-```
-
-The dashboard image will be saved to `python/sensor_mount_dashboard.png`.
-
-### Troubleshooting
-
-**`ModuleNotFoundError: No module named 'pandas'`**
-You forgot to install requirements or your virtual environment is not activated. Run:
-```bash
-pip install -r requirements.txt
-```
-
-**`FileNotFoundError: flight_test_data.csv`**
-You need to run `generate_flight_data.py` before `sensor_mount_analysis.py`. The analysis script reads the CSV that the generator creates.
-
-**Virtual environment not activating on Windows**
-If you get a permissions error run this first:
-```bash
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
+![Dashboard](Python/sensor_dashboard.png)
 
 ---
 
