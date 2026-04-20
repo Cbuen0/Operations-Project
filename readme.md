@@ -103,40 +103,11 @@ Operations-Project/
 - **RPN ≥ 100** → Corrective action required
 - **Severity ≥ 9** → Corrective action required regardless of RPN
 
-### Top Risk Items
-
-| Failure Mode | S | O | D | RPN | Action |
-|---|---|---|---|---|---|
-| Fatigue crack at inner fillet | 9 | 3 | 4 | **108** | YES |
-| Fastener loosening under vibration | 7 | 4 | 3 | 84 | MONITOR |
-| Galvanic corrosion at interface | 6 | 4 | 4 | 96 | MONITOR |
-| Sensor ejection / FOD risk | 10 | 2 | 2 | 40 | YES (S=10) |
-
 ---
 
 ## Python Analysis — Flight Test Dashboard
 
 **Files:** `python/generate_flight_data.py` + `python/sensor_mount_analysis.py`
-
-### What the scripts do
-
-**`generate_flight_data.py`**
-Generates a 500-second synthetic flight test dataset modeling a research aircraft flight profile with:
-- Physics-based altitude profile (climb at 3 ft/s → 300 ft cruise → descent at 2 ft/s)
-- Airspeed ramp to 120 kts cruise with gaussian sensor noise (σ=1.5 kts)
-- Three injected anomalies at known timestamps for detector validation:
-  - Vibration spike at t=150s (turbulence simulation, peak 9.1 in/s²)
-  - Airspeed dropout at t=280s (pitot sensor glitch, -40 kts)
-  - Gz spike at t=420s (abrupt maneuver, peak ~4.8G)
-
-**`sensor_mount_analysis.py`**
-Loads real mass properties exported from the Onshape CAD model (ASM-001) and performs:
-
-1. **Weight budget check** — verifies assembly mass against 5.0 lb instrument bay limit
-2. **CG shift analysis** — calculates payload effect on aircraft center of gravity using the composite CG formula
-3. **Structural margin check** — computes max load at 9G and compares against 4x 1/4-20 bolt shear capacity
-4. **Anomaly detection** — flags vibration events, high-G maneuvers, and airspeed dropouts using threshold and rolling mean methods
-5. **Dashboard generation** — outputs a 4-panel matplotlib engineering dashboard
 
 ### Dashboard Output
 
@@ -151,10 +122,3 @@ Loads real mass properties exported from the Onshape CAD model (ASM-001) and per
 - **MIL-STD-1629A** — FMEA methodology
 - **GitHub** — version control and portfolio hosting
 
----
-
-## References
-
-- MIL-STD-1629A — Procedures for Performing a Failure Mode, Effects, and Criticality Analysis (1980)
-- NASA SP-2016-6119 — NASA Systems Engineering Handbook
-- 6061-T6 Aluminum — ASM Aerospace Specification Metals
