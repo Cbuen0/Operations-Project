@@ -82,7 +82,7 @@ Operations-Project/
 
 **File:** `FMEA/ASM-001_Design_FMEA.xlsx`
 
-### Severity Scale (MIL-STD-1629A aligned)
+### Severity Scale
 | Score | Category | Definition |
 |---|---|---|
 | 9–10 | Catastrophic | May cause death or loss of aircraft |
