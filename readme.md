@@ -1,6 +1,6 @@
 # Aircraft Research Sensor Mount
 ### Operations Flight Test Portfolio Project
-**Author:** Carlos Bueno | **Date:** April 2026
+**Author:** Carlos Bueno | **Date:** April 2026 | [Personal Portfolio](https://cbuen0.github.io/Personal-Portfolio/index.html#home)
 
 ---
 
