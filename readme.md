@@ -78,11 +78,9 @@ Operations-Project/
 
 ---
 
-## Design FMEA — MIL-STD-1629A
+## Design FMEA
 
 **File:** `fmea/ASM-001_Design_FMEA.xlsx`
-
-FMEA conducted in accordance with MIL-STD-1629A severity classification categories, which form the basis for NASA and FAA aerospace FMEA standards.
 
 ### Severity Scale (MIL-STD-1629A aligned)
 | Score | Category | Definition |
