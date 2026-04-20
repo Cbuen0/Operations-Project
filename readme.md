@@ -144,15 +144,6 @@ Loads real mass properties exported from the Onshape CAD model (ASM-001) and per
 
 ---
 
-## Resume Bullets
-
-- Designed SolidWorks-equivalent CAD model and assembly of an aircraft research instrumentation sensor mount in Onshape, including detailed engineering drawing (ASM-001, ANSI standard, 1:2 scale) with GD&T callouts and material specification
-- Conducted Design FMEA aligned with MIL-STD-1629A aerospace standards, identifying 2 high-priority risk items and recommending targeted mitigations including dye penetrant inspection and isolation hardware
-- Developed Python pipeline integrating real CAD-exported mass properties with synthetic flight test data to perform CG shift analysis, structural margin checks, and automated anomaly detection across 500-second flight profiles
-- Generated engineering dashboard using matplotlib visualizing flight profile, sensor mount vibration events, load factor margins, and weight budget — demonstrating end-to-end flight test data review workflow
-
----
-
 ## Technologies Used
 
 - **Onshape** — CAD modeling, assembly, engineering drawing
