@@ -80,7 +80,7 @@ Operations-Project/
 
 ## Design FMEA
 
-**File:** `fmea/ASM-001_Design_FMEA.xlsx`
+**File:** `FMEA/ASM-001_Design_FMEA.xlsx`
 
 ### Severity Scale (MIL-STD-1629A aligned)
 | Score | Category | Definition |
