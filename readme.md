@@ -78,7 +78,7 @@ Operations-Project/
 
 ---
 
-## Design FMEA
+<!-- ## Design FMEA
 
 **File:** `FMEA/ASM-001_Design_FMEA.xlsx`
 
@@ -102,7 +102,7 @@ Operations-Project/
 ### Action Threshold
 - **RPN ≥ 100** → Corrective action required
 - **Severity ≥ 9** → Corrective action required regardless of RPN
-
+-->
 ---
 
 ## Python Analysis — Flight Test Dashboard
